@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Movies</h1>
+  <thead>
+  </thead>
+
+  <tbody>
+      <table>
+        <tr>
+              <th>Titlle</th>
+              <th>Content</th>
+              <th>Age</th>
+              <th>Category</th>
+              <th>Quality</th>
+              <th>Voice</th>
+            </tr>
+          <tr>
+        <% Movie.all.each do |movie| %>
+
+            <td><%= movie.title %></td>
+            <td><%= movie.content %></td>
+            <td><%= movie.age %></td>
+            <td><%= movie.category %></td>
+            <td><%= movie.quality %></td>
+            <td><%= movie.voice %></td>
+          </tr>
+        <% end %>
+      </table>
+  </tbody>
+
+
