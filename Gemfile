@@ -20,6 +20,11 @@ gem "mini_magick"
 gem "paperclip", "~> 6.0.0"
 gem "mimemagic"
 gem 'faker'
+gem 'kaminari'
+gem 'searchkick'
+gem 'simple_form'
+gem 'elasticsearch', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
+gem 'json', '~> 1.8', '>= 1.8.3'
 
 
 

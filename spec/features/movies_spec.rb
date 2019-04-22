@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Movie', type: :feature do
-  let!(:author) { create :user }
-  let!(:movie)  { create :movie, user: author }
-  let!(:movie2) { create :movie, user: author }
+  let!(:movie)  { create :movie, content: 'asd' }
+  let!(:movie2) { create :movie, con }
   let!(:movie3) { create :movie }
 
   describe 'visitor' do
@@ -12,6 +11,18 @@ RSpec.describe 'Movie', type: :feature do
     end
 
     it 'can see the Movies table' do
+      expect(page).to have_content('Movies')
+    end
+
+    it 'can search by content' do
+      fill_in 'Content', with: 'asd'
+      click_button 'Search'
+      expect(page).to have_content('Movies')
+    end
+
+    it 'can search by content' do
+      fill_in 'Content', with: 'asd'
+      click_button 'Search'
       expect(page).to have_content('Movies')
     end
   end

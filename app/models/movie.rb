@@ -1,9 +1,5 @@
 class Movie < ApplicationRecord
-
-
-
-  # scope :actual, ->{ order(created_at: :desc) }
-  # def recent_responses
-  #   responses.actual.includes(:movie)
-  # end
+  def self.search_by(search_term)
+    where("LOWER(title) LIKE :search_term")
+  end
 end
