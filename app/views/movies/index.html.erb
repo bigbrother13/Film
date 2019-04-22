@@ -1,9 +1,8 @@
 <p id='notice'><%= notice %></p>
 
-<%= simple_form_for :search, url: root_path, method: 'GET' do |f| %>
-<%= text_field_tag :search, @seach_term, placeholder: "Search" %>
-  <%= f.input :content %>
-  <%= f.submit 'Search' %>
+<%= form_tag(root_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search', name: nil %>
 <% end %>
 
 <h1>Movies</h1>
@@ -17,7 +16,7 @@
       <th>Quality</th>
       <th>Voice</th>
     </tr>
-    <% Movie.all.each do |movie| %>
+    <% @movies.each do |movie| %>
       <tr>
           <td><%= movie.title %></td>
           <td><%= movie.content %></td>

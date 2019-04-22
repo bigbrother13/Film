@@ -1,10 +1,9 @@
 class MoviesController < ApplicationController
   def index
-    if params[:search]
-      @search_term = params[:search]
-      @movies = @movies.search(@search_term)
+    @movies = if params[:term]
+      Movie.where('title LIKE ?', "%#{params[:term]}%")
     else
-      @movies= Movie.order('update_at DESC')
+      Movie.all
     end
   end
 end
