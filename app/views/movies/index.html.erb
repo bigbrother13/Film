@@ -1,6 +1,6 @@
 <p id='notice'><%= notice %></p>
 
-<%= form_tag(root_path, method: :get) do %>
+<%= simple_form_for :search, url: root_path, method: 'GET' do |f| %>
   <%= text_field_tag :term, params[:term] %>
   <%= submit_tag 'Search', name: nil %>
 <% end %>
@@ -28,3 +28,6 @@
     <% end %>
   </tbody>
 </table>
+
+
+
