@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
   def new
     @search = Search.new
-    @categories = Movie.uniq.pluck(:category)
+    @categories = Movie.pluck(:category).uniq
   end
 
   def create
@@ -16,6 +16,6 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.require(:search).permit(:title, :content, :category, :age, :quality, :voice)
+    params.require(:search).permit(:keywords, :content, :category, :age, :quality, :voice)
   end
 end

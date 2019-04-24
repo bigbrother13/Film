@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  keywords: MyString
+  content: MyText
+  category: MyString
+  age: 1
+  quality: 1
+  voice: MyString
+
+two:
+  keywords: MyString
+  content: MyText
+  category: MyString
+  age: 1
+  quality: 1
+  voice: MyString

@@ -2,17 +2,19 @@
 
 <p><%= link_to 'Back', new_search_path %></p>
 
-<% if @search.search_movies.emply? %>
+<% if @search.search_movies.empty? %>
   <p>No Records Found</p>
 <% else %>
   <% @search.search_movies.each do |c| %>
     <br>
 
     <div class="div">
-      <h1><%= c.title%></h1>
+      <h1><%= c.title %></h1>
       <p>Content: <%= c.content %></p>
       <p>Category: <%= c.category %></p>
       <p>Age: <%= c.age %></p>
+      <p>Quality: <%= c.quality %></p>
+      <p>Voice: <%= c.voice %></p>
     </div>
   <% end %>
 
