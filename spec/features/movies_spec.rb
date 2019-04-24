@@ -17,12 +17,7 @@ RSpec.describe 'Movie', type: :feature do
     it 'can search by content' do
       fill_in name="term", with: 'asd'
       click_button 'Search'
-      expect(page).to have_content('ads')
+      expect(page).to have_content('asd')
     end
-
-    # it 'go to new page' do
-    #   click_button '2'
-    #   expect(page).not_to have_link('link text', href: '...')
-    # ends
   end
 end
