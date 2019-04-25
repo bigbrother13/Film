@@ -1,13 +1,14 @@
 <p id='notice'><%= notice %></p>
 
 <%= simple_form_for :search, url: root_path, method: 'GET' do |f| %>
-  <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search', name: nil %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.input :quality, as: :boolean, input_html: { value: params[:quality] } %>
+  <%= submit_tag 'Search' %>
 <% end %>
 
-<h2><%= link_to "Filt Search", new_search_path %></h2>
-
 <h1>Movies</h1>
+
 <table>
   <tbody>
     <tr>
