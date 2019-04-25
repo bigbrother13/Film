@@ -5,8 +5,8 @@ class CreateMovies < ActiveRecord::Migration[5.2]
       t.text :content
       t.string :category
       t.string :age
-      t.string :quality
-      t.string :voice
+      t.boolean :quality
+      t.boolean :voice
 
       t.timestamps
     end

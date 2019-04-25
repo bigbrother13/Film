@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2019_04_22_134736) do
     t.text "content"
     t.string "category"
     t.string "age"
-    t.string "quality"
-    t.string "voice"
+    t.boolean "quality"
+    t.boolean "voice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,4 +29,5 @@ ActiveRecord::Schema.define(version: 2019_04_22_134736) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end
