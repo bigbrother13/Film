@@ -26,9 +26,15 @@ RSpec.describe 'Movie', type: :feature do
     end
 
     it 'can use filtr for search' do
-      fill_in 'quality', with: movie.quality 
+      page.check('search_quality') 
       click_button 'Search'
       expect(page).to have_content(movie.quality)
+    end
+
+    it 'can use filtr for search' do
+      page.check('search_voice') 
+      click_button 'Search'
+      expect(page).to have_content(movie.voice)
     end
   end
 end
