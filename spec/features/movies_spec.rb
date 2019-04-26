@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Movie', type: :feature do
   let!(:movie)  { create :movie}
-  let!(:movie)  { create :movie, content: 'asd' }
+  let!(:movie2) { create :movie, content: 'asd' }
 
   describe 'visitor' do
     before do
@@ -13,19 +13,13 @@ RSpec.describe 'Movie', type: :feature do
       expect(page).to have_content('Movies')
     end
 
-    # it 'can search by content' do
-    #   fill_in 'term', with: 'asd'
-    #   click_button 'Search'
-    #   expect(page).to have_content('asd')
-    # end
-
     it 'can use filtr for search' do
-      fill_in title, with: 'iure quia'
-      fill_in content, with: ' ea eos dolor aliquam'
-      fill_in age, with: true
-      fill_in voice, with: true
-      click_button "Search"
-      expect(page).to have_content('iure quia')
+      fill_in 'Title', with: movie.title
+      fill_in 'Content', with: movie.content
+      fill_in 'Quality', with: (quality: true)
+
+      click_button 'Search'
+      expect(page).to have_content(movie.title)
     end
   end
 end
