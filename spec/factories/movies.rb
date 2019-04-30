@@ -3,6 +3,6 @@ FactoryBot.define do
     title    { Faker::Lorem.sentence }
     content  { Faker::Lorem.question }
     quality  { true }
-    voice    { true }
+    voice    { false }
   end
 end
