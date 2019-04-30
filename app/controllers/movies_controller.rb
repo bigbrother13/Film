@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Search.new(search_params).perform
+    @movies = Search.new(options: search_params).perform
   end
 
   private
@@ -9,4 +9,3 @@ class MoviesController < ApplicationController
     params[:search] || {}
   end
 end
-

@@ -1,17 +1,37 @@
 class Search
-  def initialize(params)
-    @title = params[:title]
-    @content = params[:content]
-    @quality = params[:quality]
-    @sound = params[:sound]
+  def initialize(args = {})
+    @options = args.fetch(:options, {})
+    @model   = args.fetch(:model, Movie)
   end
 
   def perform
-    @movies = Movie.all
-    @movies = @movies.with_title(@title) if @title.present?
-    @movies = @movies.with_content(@content) if @content.present?
-    @movies = @movies.with_quality if @quality == '1'
-    @movies = @movies.with_voice if @sound == '1'
-    @movies
+    @options.keys.inject(@model.all) do |collection, option|
+      type_for(option).run(collection: collection, option: option, value: @options[option])
+    end
+  end
+
+  private
+
+  def type_for(option)
+    type = @model.columns_hash[option.to_s].type.to_s.capitalize
+    "Search::#{type}Search".constantize
+  end
+
+  class DefaultSearch
+    def self.run(collection:, option:, value:)
+      value.present? ? collection.send("with_#{option}", value) : collection
+    end
+  end
+
+  class StringSearch < DefaultSearch
+  end
+
+  class TextSearch < DefaultSearch
+  end
+
+  class BooleanSearch
+    def self.run(collection:, option:, value:)
+      value == '1' ? collection.send("with_#{option}") : collection
+    end
   end
 end
