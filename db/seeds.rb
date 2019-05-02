@@ -8,3 +8,12 @@
     voice:    [true, false].sample
   )
 end
+
+20.times do
+  Game.create(
+    title: Faker::Lorem.words(1).join(' ').capitalize,
+    category: ['action', 'rpg', 'strategy', 'adventure'].sample,
+    platform: ['PC', 'PS', 'XBOX'].sample,
+    score: (1..100).to_a.sample
+  )
+end

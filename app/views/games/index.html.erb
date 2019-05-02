@@ -1,0 +1,35 @@
+<p id='notice'><%= notice %></p>
+<a href='/'>Home</a>
+
+<%= simple_form_for :search, url: games_path, method: 'GET' do |f| %>
+  <%= f.input :title %>
+  <%= f.label :category %>
+  <%= f.select :category, [' '] + Game.pluck(:category).uniq %>
+  <br>
+  <%= f.label :platform %>
+  <%= f.select :platform, [' '] + Game.pluck(:platform).uniq %>
+  <br>
+  <%= f.input :score, as: :integer %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<h1>Games</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Platform</th>
+      <th>Score</th>
+    </tr>
+    <% @games.each do |game| %>
+      <tr>
+          <td><%= game.title %></td>
+          <td><%= game.category %></td>
+          <td><%= game.platform %></td>
+          <td><%= game.score %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

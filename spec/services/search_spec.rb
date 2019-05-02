@@ -5,7 +5,7 @@ RSpec.describe Search do
   let!(:movie2) { create :movie, content: 'aaaaa' }
 
   describe 'positive cases' do
-    let(:params)  { { options: { content: 'voluptas voluptates', quality: true } } }
+    let(:params)  { { options: { content: 'voluptas voluptates', quality: true }, model_name: Movie } }
 
     it 'can search by content and quality' do
       search = Search.new(params)
@@ -14,17 +14,14 @@ RSpec.describe Search do
     end
 
     it 'can search by voiceover' do
-      search = Search.new(options: { voice: '1' })
+      search = Search.new(options: { voice: '1' }, model_name: Movie)
       expect(search.perform).to include(movie)
       expect(search.perform).to_not include(movie2)
-
-      search = Search.new
-      expect(search.perform.map(&:title)).to eq([movie, movie2].map(&:title))
     end
   end
 
   describe 'negative cases' do
-    let(:params) { { options: { content: 'ccc', quality: true } } }
+    let(:params) { { options: { content: 'ccc', quality: true }, model_name: Movie } }
 
     it 'can search by title and voice without result' do
       search = Search.new(params)

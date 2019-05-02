@@ -1,11 +1,15 @@
 <p id='notice'><%= notice %></p>
 <a href='/'>Home</a>
+<%= link_to 'Games', games_path %>
 
 <%= simple_form_for :search, url: root_path, method: 'GET' do |f| %>
   <%= f.input :title %>
   <%= f.input :content %>
   <%= f.input :quality, as: :boolean, input_html: { value: params[:quality] } %>
   <%= f.input :voice, as: :boolean, input_html: { value: params[:voice] } %>
+  <%= f.label :category %>
+  <%= f.select :category, [' '] + Movie.pluck(:category).uniq %>
+  <br>
   <%= submit_tag 'Search' %>
 <% end %>
 
@@ -33,6 +37,3 @@
     <% end %>
   </tbody>
 </table>
-
-
-

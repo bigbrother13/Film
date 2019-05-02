@@ -36,5 +36,11 @@ RSpec.describe 'Movie', type: :feature do
       click_button 'Search'
       expect(page).to have_content(movie.title)
     end
+
+    # it 'can use filter for search' do
+    #   page.find(:select, "search_category").first(:option, 'drama').select_option
+    #   click_button 'Search'
+    #   expect(page).to have_content(movie.title)
+    # end
   end
 end

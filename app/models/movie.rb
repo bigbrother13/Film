@@ -4,4 +4,6 @@ class Movie < ApplicationRecord
 
   scope :with_quality, -> { where(quality: true) }
   scope :with_voice,   -> { where(voice: true) }
+
+  scope :with_category, ->(category) { where(category: category) }
 end

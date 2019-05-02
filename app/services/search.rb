@@ -1,7 +1,7 @@
 class Search
   def initialize(args = {})
     @options = args.fetch(:options, {})
-    @model   = args.fetch(:model, Movie)
+    @model   = args.fetch(:model, args[:model_name])
   end
 
   def perform
@@ -27,6 +27,9 @@ class Search
   end
 
   class TextSearch < DefaultSearch
+  end
+
+  class IntegerSearch < DefaultSearch
   end
 
   class BooleanSearch
