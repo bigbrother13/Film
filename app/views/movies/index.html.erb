@@ -8,7 +8,7 @@
   <%= f.input :quality, as: :boolean, input_html: { value: params[:quality] } %>
   <%= f.input :voice, as: :boolean, input_html: { value: params[:voice] } %>
   <%= f.label :category %>
-  <%= f.select :category, [' '] + Movie.pluck(:category).uniq %>
+  <%= f.select :category, Movie::CATEGORIES %>
   <br>
   <%= submit_tag 'Search' %>
 <% end %>

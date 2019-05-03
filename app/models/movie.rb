@@ -1,4 +1,6 @@
 class Movie < ApplicationRecord
+  CATEGORIES = %w(drama comedy action adventure)
+
   scope :with_title,   -> (title) 	{ where('title LIKE ?', "%#{title}%")}
   scope :with_content, -> (content) { where('content LIKE ?', "%#{content}%")}
 

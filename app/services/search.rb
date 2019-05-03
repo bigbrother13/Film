@@ -1,7 +1,7 @@
 class Search
   def initialize(args = {})
     @options = args.fetch(:options, {})
-    @model   = args.fetch(:model, args[:model_name])
+    @model   = args.fetch(:model, Movie)
   end
 
   def perform

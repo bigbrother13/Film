@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-  	@games = Search.new(options: search_params, model_name: Game).perform
+  	@games = Search.new(options: search_params, model: Game).perform
   end
 
   private
